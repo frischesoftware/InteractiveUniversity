@@ -1,0 +1,48 @@
+Colors:
+
+#747d82
+#9ca2a6
+#c5c9cc
+#f0f1f2
+
+sparsely, to highlight things:
+
+blue #1F4689
+red: #a01717
+
+
+
+Detailed Info for the 5 pictures:
+
+SQL: Text simplified as follows (all caps except "Keys")
+
+SELECT * FROM A
+LEFT JOIN B
+ON A.Key = B.Key
+
+
+Linear Optimization:
+
+like depicted but with just 2 lines (leave out the outer line with the green area)
+the area that's delimited by the 2 lines could be highlighted, as well as the intersection point
+between the two lines
+
+
+Regular Expression:
+ok as it is
+
+
+Porter's Five Forces
+I've added a better example - the 4 outer elements should come from 3, 6, 9 and 10 o'clock, arrows pointing to the inner element
+
+Leave out the text in brackets (Just "Potential Entrants", not "(Threat of Mobility)"), otherwise it's too crowded
+
+all 5 elements are equally important, "Industry Rivalry" does not need it's own background.
+
+
+
+Boston Box/Growth Share matrix
+
+Leave out the "Low"s and "High"s; "CASH GENERATION" and "CASH USE", vertical is "Relative Market Share" or "Rel. Market Share" and vertical is just "Growth".
+
+Instead of the money bag I need a Cow (as in "Cash Cow", that's what everybody recognizes best).

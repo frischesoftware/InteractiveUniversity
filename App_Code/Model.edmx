@@ -1,0 +1,775 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InteractiveUniversityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="InteractiveUniversityModelStoreContainer">
+          <EntitySet Name="dbAvailableGames" EntityType="InteractiveUniversityModel.Store.dbAvailableGames" store:Type="Tables" store:Schema="dbo" store:Name="dbAvailableGames">
+            <DefiningQuery>SELECT 
+      [dbAvailableGames].[id] AS [id], 
+      [dbAvailableGames].[gameName] AS [gameName], 
+      [dbAvailableGames].[gameType] AS [gameType], 
+      [dbAvailableGames].[gameDescription] AS [gameDescription], 
+      [dbAvailableGames].[available] AS [available]
+      FROM [dbo].[dbAvailableGames] AS [dbAvailableGames]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="dbFFFactor" EntityType="InteractiveUniversityModel.Store.dbFFFactor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbFFGame" EntityType="InteractiveUniversityModel.Store.dbFFGame" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbGame" EntityType="InteractiveUniversityModel.Store.dbGame" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbMarket" EntityType="InteractiveUniversityModel.Store.dbMarket" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbMarketName" EntityType="InteractiveUniversityModel.Store.dbMarketName" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbMarketTemplate" EntityType="InteractiveUniversityModel.Store.dbMarketTemplate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbProduct" EntityType="InteractiveUniversityModel.Store.dbProduct" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbProductName" EntityType="InteractiveUniversityModel.Store.dbProductName" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbProductState" EntityType="InteractiveUniversityModel.Store.dbProductState" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbProductStateTemplate" EntityType="InteractiveUniversityModel.Store.dbProductStateTemplate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbProductTemplate" EntityType="InteractiveUniversityModel.Store.dbProductTemplate" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="dbScenario" EntityType="InteractiveUniversityModel.Store.dbScenario" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_dbFFFactor_dbFFGame" Association="InteractiveUniversityModel.Store.FK_dbFFFactor_dbFFGame">
+            <End Role="dbFFGame" EntitySet="dbFFGame" />
+            <End Role="dbFFFactor" EntitySet="dbFFFactor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbMarket_dbGame" Association="InteractiveUniversityModel.Store.FK_dbMarket_dbGame">
+            <End Role="dbGame" EntitySet="dbGame" />
+            <End Role="dbMarket" EntitySet="dbMarket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbProduct_dbMarket" Association="InteractiveUniversityModel.Store.FK_dbProduct_dbMarket">
+            <End Role="dbMarket" EntitySet="dbMarket" />
+            <End Role="dbProduct" EntitySet="dbProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbProductName_dbMarketName" Association="InteractiveUniversityModel.Store.FK_dbProductName_dbMarketName">
+            <End Role="dbMarketName" EntitySet="dbMarketName" />
+            <End Role="dbProductName" EntitySet="dbProductName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbProductStateTemplate_dbProductTemplate" Association="InteractiveUniversityModel.Store.FK_dbProductStateTemplate_dbProductTemplate">
+            <End Role="dbProductTemplate" EntitySet="dbProductTemplate" />
+            <End Role="dbProductStateTemplate" EntitySet="dbProductStateTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbProductTemplate_dbMarketTemplate" Association="InteractiveUniversityModel.Store.FK_dbProductTemplate_dbMarketTemplate">
+            <End Role="dbMarketTemplate" EntitySet="dbMarketTemplate" />
+            <End Role="dbProductTemplate" EntitySet="dbProductTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductState_Product" Association="InteractiveUniversityModel.Store.FK_ProductState_Product">
+            <End Role="dbProduct" EntitySet="dbProduct" />
+            <End Role="dbProductState" EntitySet="dbProductState" />
+          </AssociationSet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'InteractiveUniversity.dbo.dbAvailableGames' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="dbAvailableGames">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="available" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="gameName" Type="nvarchar" MaxLength="50" />
+          <Property Name="gameType" Type="nvarchar" MaxLength="50" />
+          <Property Name="gameDescription" Type="nvarchar" MaxLength="200" />
+          <Property Name="available" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbFFFactor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ffgame_id" Type="int" Nullable="false" />
+          <Property Name="force_shortname" Type="nvarchar" MaxLength="50" />
+          <Property Name="force_fullname" Type="nvarchar" MaxLength="200" />
+          <Property Name="factor_shortname" Type="nvarchar" MaxLength="50" />
+          <Property Name="factor_fullname" Type="nvarchar" MaxLength="200" />
+          <Property Name="factor_auspraegung" Type="nvarchar" MaxLength="50" />
+          <Property Name="factor_visualization" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="dbFFGame">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="playergamename" Type="nvarchar" MaxLength="50" />
+          <Property Name="turnbookmark" Type="int" />
+          <Property Name="gamename" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dbGame">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="playergamename" Type="nvarchar" MaxLength="50" />
+          <Property Name="turnBookmark" Type="int" />
+          <Property Name="maxTurns" Type="int" />
+          <Property Name="maxBadRounds" Type="int" />
+          <Property Name="maxNegativeCF" Type="int" />
+          <Property Name="gameDescription" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="dbMarket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="game_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="growth" Type="nvarchar" MaxLength="50" />
+          <Property Name="toBeAddedInTurn" Type="int" />
+          <Property Name="marketLifeTimeUp" Type="int" />
+          <Property Name="marketLifeTimeDown" Type="int" />
+          <Property Name="stepsize_down" Type="int" />
+          <Property Name="stepsize_up" Type="int" />
+        </EntityType>
+        <EntityType Name="dbMarketName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="marketName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="marketType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dbMarketTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="dbAvailableGames_id" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="type" Type="nvarchar" MaxLength="50" />
+          <Property Name="growth" Type="nvarchar" MaxLength="50" />
+          <Property Name="growth2" Type="float" />
+          <Property Name="toBeAddedInTurn" Type="int" />
+        </EntityType>
+        <EntityType Name="dbProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="market_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="playerProduct" Type="int" />
+          <Property Name="primaryColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="secondaryColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="advisor_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="advisor_imagesource" Type="nvarchar" MaxLength="100" />
+          <Property Name="advisor_feedback" Type="nvarchar(max)" />
+          <Property Name="advisor_enabled" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dbProductName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="marketName_id" Type="int" Nullable="false" />
+          <Property Name="productName" Type="nvarchar" MaxLength="50" />
+          <Property Name="productStrength" Type="nvarchar" MaxLength="50" />
+          <Property Name="productFriendlyness" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dbProductState">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="turn" Type="int" />
+          <Property Name="marketshare" Type="float" />
+        </EntityType>
+        <EntityType Name="dbProductStateTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="productTemplate_id" Type="int" />
+          <Property Name="turn" Type="int" />
+          <Property Name="marketshare" Type="float" />
+        </EntityType>
+        <EntityType Name="dbProductTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="marketTemplate_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="playerProduct" Type="int" />
+          <Property Name="primaryColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="secondaryColor" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="dbScenario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="gameName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="gameType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_dbFFFactor_dbFFGame">
+          <End Role="dbFFGame" Type="InteractiveUniversityModel.Store.dbFFGame" Multiplicity="1" />
+          <End Role="dbFFFactor" Type="InteractiveUniversityModel.Store.dbFFFactor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbFFGame">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbFFFactor">
+              <PropertyRef Name="ffgame_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbMarket_dbGame">
+          <End Role="dbGame" Type="InteractiveUniversityModel.Store.dbGame" Multiplicity="1" />
+          <End Role="dbMarket" Type="InteractiveUniversityModel.Store.dbMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbGame">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbMarket">
+              <PropertyRef Name="game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbProduct_dbMarket">
+          <End Role="dbMarket" Type="InteractiveUniversityModel.Store.dbMarket" Multiplicity="1" />
+          <End Role="dbProduct" Type="InteractiveUniversityModel.Store.dbProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbMarket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProduct">
+              <PropertyRef Name="market_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbProductName_dbMarketName">
+          <End Role="dbMarketName" Type="InteractiveUniversityModel.Store.dbMarketName" Multiplicity="1" />
+          <End Role="dbProductName" Type="InteractiveUniversityModel.Store.dbProductName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbMarketName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProductName">
+              <PropertyRef Name="marketName_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbProductStateTemplate_dbProductTemplate">
+          <End Role="dbProductTemplate" Type="InteractiveUniversityModel.Store.dbProductTemplate" Multiplicity="0..1" />
+          <End Role="dbProductStateTemplate" Type="InteractiveUniversityModel.Store.dbProductStateTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbProductTemplate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProductStateTemplate">
+              <PropertyRef Name="productTemplate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbProductTemplate_dbMarketTemplate">
+          <End Role="dbMarketTemplate" Type="InteractiveUniversityModel.Store.dbMarketTemplate" Multiplicity="1" />
+          <End Role="dbProductTemplate" Type="InteractiveUniversityModel.Store.dbProductTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbMarketTemplate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProductTemplate">
+              <PropertyRef Name="marketTemplate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductState_Product">
+          <End Role="dbProduct" Type="InteractiveUniversityModel.Store.dbProduct" Multiplicity="0..1" />
+          <End Role="dbProductState" Type="InteractiveUniversityModel.Store.dbProductState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbProduct">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProductState">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InteractiveUniversityModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="InteractiveUniversityEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="dbGame" EntityType="InteractiveUniversityModel.dbGame" />
+          <EntitySet Name="dbProduct" EntityType="InteractiveUniversityModel.dbProduct" />
+          <EntitySet Name="dbProductState" EntityType="InteractiveUniversityModel.dbProductState" />
+          <AssociationSet Name="FK_ProductState_Product" Association="InteractiveUniversityModel.FK_ProductState_Product">
+            <End Role="dbProduct" EntitySet="dbProduct" />
+            <End Role="dbProductState" EntitySet="dbProductState" />
+          </AssociationSet>
+          <EntitySet Name="dbAvailableGames" EntityType="InteractiveUniversityModel.dbAvailableGames" />
+          <EntitySet Name="dbFFFactor" EntityType="InteractiveUniversityModel.dbFFFactor" />
+          <EntitySet Name="dbFFGame" EntityType="InteractiveUniversityModel.dbFFGame" />
+          <AssociationSet Name="FK_dbFFFactor_dbFFGame" Association="InteractiveUniversityModel.FK_dbFFFactor_dbFFGame">
+            <End EntitySet="dbFFGame" Role="dbFFGame" />
+            <End EntitySet="dbFFFactor" Role="dbFFFactor" />
+          </AssociationSet>
+          <EntitySet Name="dbMarketTemplate" EntityType="InteractiveUniversityModel.dbMarketTemplate" />
+          <EntitySet Name="dbProductStateTemplate" EntityType="InteractiveUniversityModel.dbProductStateTemplate" />
+          <EntitySet Name="dbProductTemplate" EntityType="InteractiveUniversityModel.dbProductTemplate" />
+          <AssociationSet Name="FK_dbProductTemplate_dbMarketTemplate" Association="InteractiveUniversityModel.FK_dbProductTemplate_dbMarketTemplate">
+            <End Role="dbMarketTemplate" EntitySet="dbMarketTemplate" />
+            <End Role="dbProductTemplate" EntitySet="dbProductTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbProductStateTemplate_dbProductTemplate" Association="InteractiveUniversityModel.FK_dbProductStateTemplate_dbProductTemplate">
+            <End Role="dbProductTemplate" EntitySet="dbProductTemplate" />
+            <End Role="dbProductStateTemplate" EntitySet="dbProductStateTemplate" />
+          </AssociationSet>
+          <EntitySet Name="dbScenario" EntityType="InteractiveUniversityModel.dbScenario" />
+          <AssociationSet Name="FK_dbMarketTemplate_dbScenario" Association="InteractiveUniversityModel.FK_dbMarketTemplate_dbScenario">
+            <End Role="dbScenario" EntitySet="dbScenario" />
+            <End Role="dbMarketTemplate" EntitySet="dbMarketTemplate" />
+          </AssociationSet>
+          <EntitySet Name="dbMarket" EntityType="InteractiveUniversityModel.dbMarket" />
+          <AssociationSet Name="FK_dbMarket_dbGame" Association="InteractiveUniversityModel.FK_dbMarket_dbGame">
+            <End Role="dbGame" EntitySet="dbGame" />
+            <End Role="dbMarket" EntitySet="dbMarket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbProduct_dbMarket" Association="InteractiveUniversityModel.FK_dbProduct_dbMarket">
+            <End Role="dbMarket" EntitySet="dbMarket" />
+            <End Role="dbProduct" EntitySet="dbProduct" />
+          </AssociationSet>
+          <EntitySet Name="dbMarketName" EntityType="InteractiveUniversityModel.dbMarketName" />
+          <EntitySet Name="dbProductName" EntityType="InteractiveUniversityModel.dbProductName" />
+          <AssociationSet Name="FK_dbProductName_dbMarketName" Association="InteractiveUniversityModel.FK_dbProductName_dbMarketName">
+            <End Role="dbMarketName" EntitySet="dbMarketName" />
+            <End Role="dbProductName" EntitySet="dbProductName" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="dbGame">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="playergamename" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="turnBookmark" />
+          <NavigationProperty Name="dbMarket" Relationship="InteractiveUniversityModel.FK_dbMarket_dbGame" FromRole="dbGame" ToRole="dbMarket" />
+          <Property Type="Int32" Name="maxTurns" />
+          <Property Type="Int32" Name="maxBadRounds" />
+          <Property Type="Int32" Name="maxNegativeCF" />
+          <Property Type="String" Name="gameDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dbProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="market_id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="playerProduct" Type="Int32" />
+          <NavigationProperty Name="dbProductState" Relationship="InteractiveUniversityModel.FK_ProductState_Product" FromRole="dbProduct" ToRole="dbProductState" />
+          <Property Type="String" Name="primaryColor" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="secondaryColor" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dbMarket" Relationship="InteractiveUniversityModel.FK_dbProduct_dbMarket" FromRole="dbProduct" ToRole="dbMarket" />
+          <Property Type="String" Name="advisor_name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="advisor_imagesource" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="advisor_feedback" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="advisor_enabled" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="dbProductState">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="turn" Type="Int32" />
+          <Property Name="marketshare" Type="Double" />
+          <NavigationProperty Name="dbProduct" Relationship="InteractiveUniversityModel.FK_ProductState_Product" FromRole="dbProductState" ToRole="dbProduct" />
+        </EntityType>
+        <Association Name="FK_ProductState_Product">
+          <End Role="dbProduct" Type="InteractiveUniversityModel.dbProduct" Multiplicity="0..1" />
+          <End Role="dbProductState" Type="InteractiveUniversityModel.dbProductState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbProduct">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProductState">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dbAvailableGames">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="available" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="gameName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="gameType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="gameDescription" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="available" Nullable="false" />
+        </EntityType>
+        <EntityType Name="dbFFFactor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="ffgame_id" Nullable="false" Type="Int32" />
+          <Property Name="force_shortname" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="force_fullname" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="factor_shortname" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="factor_fullname" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="factor_auspraegung" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="factor_visualization" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <NavigationProperty Name="dbFFGame" Relationship="InteractiveUniversityModel.FK_dbFFFactor_dbFFGame" FromRole="dbFFFactor" ToRole="dbFFGame" />
+        </EntityType>
+        <EntityType Name="dbFFGame">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="playergamename" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="turnbookmark" Type="Int32" />
+          <Property Name="gamename" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <NavigationProperty Name="dbFFFactor" Relationship="InteractiveUniversityModel.FK_dbFFFactor_dbFFGame" FromRole="dbFFGame" ToRole="dbFFFactor" />
+        </EntityType>
+        <Association Name="FK_dbFFFactor_dbFFGame">
+          <End Type="InteractiveUniversityModel.dbFFGame" Multiplicity="1" Role="dbFFGame" />
+          <End Type="InteractiveUniversityModel.dbFFFactor" Multiplicity="*" Role="dbFFFactor" />
+          <ReferentialConstraint>
+            <Principal Role="dbFFGame">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbFFFactor">
+              <PropertyRef Name="ffgame_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dbMarketTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="dbAvailableGames_id" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="type" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="growth" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dbProductTemplate" Relationship="InteractiveUniversityModel.FK_dbProductTemplate_dbMarketTemplate" FromRole="dbMarketTemplate" ToRole="dbProductTemplate" />
+          <NavigationProperty Name="dbScenario" Relationship="InteractiveUniversityModel.FK_dbMarketTemplate_dbScenario" FromRole="dbMarketTemplate" ToRole="dbScenario" />
+          <Property Type="Double" Name="growth2" />
+          <Property Type="Int32" Name="toBeAddedInTurn" />
+        </EntityType>
+        <EntityType Name="dbProductStateTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="productTemplate_id" />
+          <Property Type="Int32" Name="turn" />
+          <Property Type="Double" Name="marketshare" />
+          <NavigationProperty Name="dbProductTemplate" Relationship="InteractiveUniversityModel.FK_dbProductStateTemplate_dbProductTemplate" FromRole="dbProductStateTemplate" ToRole="dbProductTemplate" />
+        </EntityType>
+        <EntityType Name="dbProductTemplate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="marketTemplate_id" Nullable="false" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="playerProduct" />
+          <NavigationProperty Name="dbMarketTemplate" Relationship="InteractiveUniversityModel.FK_dbProductTemplate_dbMarketTemplate" FromRole="dbProductTemplate" ToRole="dbMarketTemplate" />
+          <NavigationProperty Name="dbProductStateTemplate" Relationship="InteractiveUniversityModel.FK_dbProductStateTemplate_dbProductTemplate" FromRole="dbProductTemplate" ToRole="dbProductStateTemplate" />
+          <Property Type="String" Name="primaryColor" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="secondaryColor" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_dbProductTemplate_dbMarketTemplate">
+          <End Type="InteractiveUniversityModel.dbMarketTemplate" Role="dbMarketTemplate" Multiplicity="1" />
+          <End Type="InteractiveUniversityModel.dbProductTemplate" Role="dbProductTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbMarketTemplate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProductTemplate">
+              <PropertyRef Name="marketTemplate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbProductStateTemplate_dbProductTemplate">
+          <End Type="InteractiveUniversityModel.dbProductTemplate" Role="dbProductTemplate" Multiplicity="0..1" />
+          <End Type="InteractiveUniversityModel.dbProductStateTemplate" Role="dbProductStateTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbProductTemplate">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProductStateTemplate">
+              <PropertyRef Name="productTemplate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dbScenario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="gameName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="gameType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dbMarketTemplate" Relationship="InteractiveUniversityModel.FK_dbMarketTemplate_dbScenario" FromRole="dbScenario" ToRole="dbMarketTemplate" />
+        </EntityType>
+        <Association Name="FK_dbMarketTemplate_dbScenario">
+          <End Type="InteractiveUniversityModel.dbScenario" Role="dbScenario" Multiplicity="0..1" />
+          <End Type="InteractiveUniversityModel.dbMarketTemplate" Role="dbMarketTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbScenario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbMarketTemplate">
+              <PropertyRef Name="dbAvailableGames_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dbMarket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="game_id" Nullable="false" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="type" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="growth" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="toBeAddedInTurn" />
+          <NavigationProperty Name="dbGame" Relationship="InteractiveUniversityModel.FK_dbMarket_dbGame" FromRole="dbMarket" ToRole="dbGame" />
+          <NavigationProperty Name="dbProduct" Relationship="InteractiveUniversityModel.FK_dbProduct_dbMarket" FromRole="dbMarket" ToRole="dbProduct" />
+          <Property Type="Int32" Name="marketLifeTimeUp" />
+          <Property Type="Int32" Name="marketLifeTimeDown" />
+          <Property Type="Int32" Name="stepsize_down" />
+          <Property Type="Int32" Name="stepsize_up" />
+        </EntityType>
+        <Association Name="FK_dbMarket_dbGame">
+          <End Type="InteractiveUniversityModel.dbGame" Role="dbGame" Multiplicity="1" />
+          <End Type="InteractiveUniversityModel.dbMarket" Role="dbMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbGame">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbMarket">
+              <PropertyRef Name="game_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbProduct_dbMarket">
+          <End Type="InteractiveUniversityModel.dbMarket" Role="dbMarket" Multiplicity="1" />
+          <End Type="InteractiveUniversityModel.dbProduct" Role="dbProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbMarket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProduct">
+              <PropertyRef Name="market_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="dbMarketName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="marketName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="marketType" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dbProductName" Relationship="InteractiveUniversityModel.FK_dbProductName_dbMarketName" FromRole="dbMarketName" ToRole="dbProductName" />
+        </EntityType>
+        <EntityType Name="dbProductName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="marketName_id" Nullable="false" />
+          <Property Type="String" Name="productName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="productStrength" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="productFriendlyness" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="dbMarketName" Relationship="InteractiveUniversityModel.FK_dbProductName_dbMarketName" FromRole="dbProductName" ToRole="dbMarketName" />
+        </EntityType>
+        <Association Name="FK_dbProductName_dbMarketName">
+          <End Type="InteractiveUniversityModel.dbMarketName" Role="dbMarketName" Multiplicity="1" />
+          <End Type="InteractiveUniversityModel.dbProductName" Role="dbProductName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="dbMarketName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="dbProductName">
+              <PropertyRef Name="marketName_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InteractiveUniversityModelStoreContainer" CdmEntityContainer="InteractiveUniversityEntities1">
+          <EntitySetMapping Name="dbGame">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbGame">
+              <MappingFragment StoreEntitySet="dbGame">
+                <ScalarProperty Name="gameDescription" ColumnName="gameDescription" />
+                <ScalarProperty Name="maxNegativeCF" ColumnName="maxNegativeCF" />
+                <ScalarProperty Name="maxBadRounds" ColumnName="maxBadRounds" />
+                <ScalarProperty Name="maxTurns" ColumnName="maxTurns" />
+                <ScalarProperty Name="turnBookmark" ColumnName="turnBookmark" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playergamename" ColumnName="playergamename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbProduct">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbProduct">
+              <MappingFragment StoreEntitySet="dbProduct">
+                <ScalarProperty Name="advisor_enabled" ColumnName="advisor_enabled" />
+                <ScalarProperty Name="advisor_feedback" ColumnName="advisor_feedback" />
+                <ScalarProperty Name="advisor_imagesource" ColumnName="advisor_imagesource" />
+                <ScalarProperty Name="advisor_name" ColumnName="advisor_name" />
+                <ScalarProperty Name="secondaryColor" ColumnName="secondaryColor" />
+                <ScalarProperty Name="primaryColor" ColumnName="primaryColor" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="market_id" ColumnName="market_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="playerProduct" ColumnName="playerProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbProductState">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbProductState">
+              <MappingFragment StoreEntitySet="dbProductState">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="turn" ColumnName="turn" />
+                <ScalarProperty Name="marketshare" ColumnName="marketshare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbAvailableGames">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbAvailableGames">
+              <MappingFragment StoreEntitySet="dbAvailableGames">
+                <ScalarProperty Name="available" ColumnName="available" />
+                <ScalarProperty Name="gameDescription" ColumnName="gameDescription" />
+                <ScalarProperty Name="gameType" ColumnName="gameType" />
+                <ScalarProperty Name="gameName" ColumnName="gameName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbFFFactor">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbFFFactor">
+              <MappingFragment StoreEntitySet="dbFFFactor">
+                <ScalarProperty Name="factor_visualization" ColumnName="factor_visualization" />
+                <ScalarProperty Name="factor_auspraegung" ColumnName="factor_auspraegung" />
+                <ScalarProperty Name="factor_fullname" ColumnName="factor_fullname" />
+                <ScalarProperty Name="factor_shortname" ColumnName="factor_shortname" />
+                <ScalarProperty Name="force_fullname" ColumnName="force_fullname" />
+                <ScalarProperty Name="force_shortname" ColumnName="force_shortname" />
+                <ScalarProperty Name="ffgame_id" ColumnName="ffgame_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbFFGame">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbFFGame">
+              <MappingFragment StoreEntitySet="dbFFGame">
+                <ScalarProperty Name="gamename" ColumnName="gamename" />
+                <ScalarProperty Name="turnbookmark" ColumnName="turnbookmark" />
+                <ScalarProperty Name="playergamename" ColumnName="playergamename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbMarketTemplate">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbMarketTemplate">
+              <MappingFragment StoreEntitySet="dbMarketTemplate">
+                <ScalarProperty Name="toBeAddedInTurn" ColumnName="toBeAddedInTurn" />
+                <ScalarProperty Name="growth2" ColumnName="growth2" />
+                <ScalarProperty Name="growth" ColumnName="growth" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="dbAvailableGames_id" ColumnName="dbAvailableGames_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbProductStateTemplate">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbProductStateTemplate">
+              <MappingFragment StoreEntitySet="dbProductStateTemplate">
+                <ScalarProperty Name="marketshare" ColumnName="marketshare" />
+                <ScalarProperty Name="turn" ColumnName="turn" />
+                <ScalarProperty Name="productTemplate_id" ColumnName="productTemplate_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbProductTemplate">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbProductTemplate">
+              <MappingFragment StoreEntitySet="dbProductTemplate">
+                <ScalarProperty Name="secondaryColor" ColumnName="secondaryColor" />
+                <ScalarProperty Name="primaryColor" ColumnName="primaryColor" />
+                <ScalarProperty Name="playerProduct" ColumnName="playerProduct" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="marketTemplate_id" ColumnName="marketTemplate_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbScenario">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbScenario">
+              <MappingFragment StoreEntitySet="dbScenario">
+                <ScalarProperty Name="gameType" ColumnName="gameType" />
+                <ScalarProperty Name="gameName" ColumnName="gameName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbMarket">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbMarket">
+              <MappingFragment StoreEntitySet="dbMarket">
+                <ScalarProperty Name="stepsize_up" ColumnName="stepsize_up" />
+                <ScalarProperty Name="stepsize_down" ColumnName="stepsize_down" />
+                <ScalarProperty Name="marketLifeTimeDown" ColumnName="marketLifeTimeDown" />
+                <ScalarProperty Name="marketLifeTimeUp" ColumnName="marketLifeTimeUp" />
+                <ScalarProperty Name="toBeAddedInTurn" ColumnName="toBeAddedInTurn" />
+                <ScalarProperty Name="growth" ColumnName="growth" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="game_id" ColumnName="game_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbMarketName">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbMarketName">
+              <MappingFragment StoreEntitySet="dbMarketName">
+                <ScalarProperty Name="marketType" ColumnName="marketType" />
+                <ScalarProperty Name="marketName" ColumnName="marketName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbProductName">
+            <EntityTypeMapping TypeName="InteractiveUniversityModel.dbProductName">
+              <MappingFragment StoreEntitySet="dbProductName">
+                <ScalarProperty Name="productFriendlyness" ColumnName="productFriendlyness" />
+                <ScalarProperty Name="productStrength" ColumnName="productStrength" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="marketName_id" ColumnName="marketName_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

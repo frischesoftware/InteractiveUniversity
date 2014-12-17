@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2186222ce3a1447d85ab8264a3d37591" Name="Diagramm1" ZoomLevel="90">
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbGame" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbProduct" Width="1.5" PointX="4.25" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbProductState" Width="1.5" PointX="6" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="InteractiveUniversityModel.FK_ProductState_Product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbAvailableGames" Width="1.5" PointX="9.375" PointY="3.375" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbFFFactor" PointX="5" PointY="6.875" Width="2.25" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbFFGame" PointX="8.375" PointY="6.875" Width="1.875" />
+        <AssociationConnector Association="InteractiveUniversityModel.FK_dbFFFactor_dbFFGame" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbMarketTemplate" Width="1.5" PointX="2.875" PointY="3.875" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbProductStateTemplate" Width="1.5" PointX="7.5" PointY="3.875" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbProductTemplate" Width="1.5" PointX="5.25" PointY="3.875" />
+        <AssociationConnector Association="InteractiveUniversityModel.FK_dbProductTemplate_dbMarketTemplate" />
+        <AssociationConnector Association="InteractiveUniversityModel.FK_dbProductStateTemplate_dbProductTemplate" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbScenario" Width="1.5" PointX="0.5" PointY="3.75" />
+        <AssociationConnector Association="InteractiveUniversityModel.FK_dbMarketTemplate_dbScenario" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbMarket" Width="1.5" PointX="2.5" PointY="0.5" />
+        <AssociationConnector Association="InteractiveUniversityModel.FK_dbMarket_dbGame" />
+        <AssociationConnector Association="InteractiveUniversityModel.FK_dbProduct_dbMarket" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbMarketName" Width="1.5" PointX="7.75" PointY="0.5" />
+        <EntityTypeShape EntityType="InteractiveUniversityModel.dbProductName" Width="1.5" PointX="9.625" PointY="0.5" />
+        <AssociationConnector Association="InteractiveUniversityModel.FK_dbProductName_dbMarketName" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

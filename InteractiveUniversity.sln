@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Web
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "InteractiveUniversity", ".", "{BAE04673-9674-447D-8F9E-764C086D664D}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/InteractiveUniversity"
+		Debug.AspNetCompiler.PhysicalPath = "..\InteractiveUniversity\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\InteractiveUniversity\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/InteractiveUniversity"
+		Release.AspNetCompiler.PhysicalPath = "..\InteractiveUniversity\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\InteractiveUniversity\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "59196"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveUniversity.Data", "..\InteractiveUniversity.Data\InteractiveUniversity.Data.csproj", "{048306FF-A056-4A18-98F2-6B3FA0334A39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAE04673-9674-447D-8F9E-764C086D664D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE04673-9674-447D-8F9E-764C086D664D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAE04673-9674-447D-8F9E-764C086D664D}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAE04673-9674-447D-8F9E-764C086D664D}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{048306FF-A056-4A18-98F2-6B3FA0334A39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048306FF-A056-4A18-98F2-6B3FA0334A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048306FF-A056-4A18-98F2-6B3FA0334A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048306FF-A056-4A18-98F2-6B3FA0334A39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

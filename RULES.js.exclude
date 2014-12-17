@@ -1,0 +1,57 @@
+﻿/* Die Farben für die Kreise kommen aus einer Liste. Von oben nach unten wird die Farbfolge eingehalten
+    
+
+*/
+
+// nach entity aktualisierung: T4 Textvorlagen transformieren!!! folgende Fehlermeldung:
+/*
+Der Sitzungszustand kann nicht serialisiert werden. Im 'StateServer'- und 'SQLServer'-Modus serialisiert ASP.NET die Sitzungszustandsobjekte, sodass nicht serialisierbare Objekte bzw. MarshalByRef-Objekte nicht zulässig sind. Diese Beschränkung gilt auch, wenn eine ähnliche Serialisierung im Custom-Modus durch den benutzerdefinierten Sitzungszustandsspeicher ausgeführt wird.
+
+[Serializable] in 
+*/
+
+
+
+
+//Datenbankerweiterungen:
+// Game -> Config (relative/absolute, showourproducts/showallproducts) etc -> beginning configuration, save when changed on client 
+
+//Data-array: userSelectedType: den Typ, mit dem der User das Produkt markiert
+//marketGrowthDeclineRate, marketLifeTime
+
+// es dürfen niemals identische Marktanteile vorkommen. (Kommt in der Theorie auch nicht wirklich vor, also wie handeln?)
+// besser: gewisse sAbstände, damit sich Kreise und Beschriftungen im Diagramm nicht überschneiden
+
+// rel. Marktanteil <2 (sonst passts nicht mehr in die Grafik) -> Produkt 1 zu Produkt 2;
+// auch: Bremse bei Reaktion auf Investition, damit dies nicht passiert.
+
+// Growth niemals genau 1.
+
+// Growth ist aktuell eine eindeutige Markt-id
+// -> FALSCH, MarketName ist bereits im "Data"-Objekt vorhanden -> noch in die Datenbank einfügen!!
+
+
+// List of all available games - in a table? -> populate a list on clientside ("select a new game fromt his list") -> work with
+// an ID when creating a game (dbgame.cs)
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+//
+
+svg.selectAll("circle").data(data_server, function (d) { return d.i; }).enter().append("circle").transition().duration(500).attr("cx", function (d) { return xScale(d.x); })
+  .attr("cy", function (d) { return yScale(d.y); }).attr("r", 10).attr("fill", "green");
+
+
+  */

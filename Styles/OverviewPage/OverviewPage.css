@@ -1,0 +1,47 @@
+﻿@font-face {
+    font-family: 'Conv_framd';
+    src: url('../../Scripts/Font2/franklin_gothic_medium__2_.eot');
+    src: local('☺'), url('../../Scripts/Font2/franklin_gothic_medium__2_.woff') format('woff'), url('../../Scripts/Font2/franklin_gothic_medium__2_.ttf') format('truetype'), url('../../Scripts/Font2/franklin_gothic_medium__2_.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Conv_framd';
+}
+#placeholder {  /* wie #leftSideBar*/
+    background-color:#f0f1f2;
+    font-size: 11px; 
+    color: #747d82;
+}
+.OV_Icons {
+    display: block;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding: 1px;
+    width: 175px;
+    height: 225px;
+    text-align:center;
+}
+
+.OV_Icons a {
+        text-decoration: none;        
+    }
+
+
+.OV_Image {
+    border: 1px solid #021a40;
+    width: 175px;
+    height: 175px;
+}
+
+.OV_Text {
+    background-color: #f0f1f2;
+    font-size: 11px;
+    color: #747d82;
+}
+
+.grid_10 ul li {
+    /*display:inline;*/
+    float:left;
+}

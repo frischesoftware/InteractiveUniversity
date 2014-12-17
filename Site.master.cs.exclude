@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class SiteMaster : System.Web.UI.MasterPage
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        MenuItem mnuItem = NavigationMenu.FindItem("Home"); // Find particular item
+
+        if (Convert.ToInt32(Session["uid"]) != 0)
+        {
+            mnuItem.NavigateUrl = "~/Game.aspx";
+            Logout.Visible = true;
+        }
+        else
+        {
+            mnuItem.NavigateUrl = "~/Default.aspx";
+            Login.Visible = true;
+        }
+    }
+}
